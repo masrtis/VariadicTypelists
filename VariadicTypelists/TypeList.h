@@ -24,4 +24,38 @@ struct TypeAt<0, TypeList<Head, Tail...>>
 	typedef Head Result;
 };
 
+template <typename ToFind, typename Head, typename... Tail>
+struct IndexOf;
 
+template <typename ToFind>
+struct IndexOf<ToFind, TypeList<>>
+{
+	enum
+	{
+		value = -1
+	};
+};
+
+template <typename ToFind, typename... Tail>
+struct IndexOf<ToFind, TypeList<ToFind, Tail...>>
+{
+	enum
+	{
+		value = 0
+	};
+};
+
+template <typename ToFind, typename Head, typename... Tail>
+struct IndexOf<ToFind, TypeList<Head, Tail...>>
+{
+private:
+	enum
+	{
+		checkNextElement = IndexOf<ToFind, TypeList<Tail...>>::value
+	};
+public:
+	enum
+	{
+		value = checkNextElement == -1 ? -1 : 1 + checkNextElement
+	};
+};
