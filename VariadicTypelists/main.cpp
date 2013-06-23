@@ -8,6 +8,6 @@ int main()
 	static_assert(IndexOf<float, TypeList<int, double, char>>::value == -1, "Found type that is not in typelist!");
 	static_assert(IndexOf<int, TypeList<int, double, char>>::value == 0, "Did not find int in TypeList<int, double, char>");
 	static_assert(IndexOf<char, TypeList<int, double, char>>::value == 2, "Did not find char in TypeList<int, double, char>");
-	
+
 	return 0;
 }

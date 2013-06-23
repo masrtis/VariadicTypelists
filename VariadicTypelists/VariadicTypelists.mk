@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Michael Sharpe
-Date                   :=06/15/2013
+Date                   :=06/19/2013
 CodeLitePath           :="/home/michael/.codelite"
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -80,6 +80,9 @@ $(IntermediateDirectory)/.d:
 	@test -d ./Debug || $(MakeDirCommand) ./Debug
 
 PreBuild:
+	@echo Executing Pre Build commands ...
+	g++ --version
+	@echo Done
 
 
 ##
