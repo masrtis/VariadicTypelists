@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=VariadicTypelists
 ConfigurationName      :=Debug
-WorkspacePath          := "/home/michael/Branches/VariadicTemplates/VariadicTypelists"
-ProjectPath            := "/home/michael/Branches/VariadicTemplates/VariadicTypelists"
+WorkspacePath          := "/home/michael/VariadicTemplates/VariadicTypelists"
+ProjectPath            := "/home/michael/VariadicTemplates/VariadicTypelists"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Michael Sharpe
-Date                   :=06/19/2013
+Date                   :=06/30/2013
 CodeLitePath           :="/home/michael/.codelite"
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -50,7 +50,7 @@ LibPath                := $(LibraryPathSwitch).
 AR       := ar rcus
 CXX      := g++
 CC       := gcc
-CXXFLAGS :=  -Wmain -g -ansi -pedantic -Wall -O0 -std=c++11 $(Preprocessors)
+CXXFLAGS :=  -pedantic-errors -g -pedantic -Wall -O0  -Werror  -std=c++11 $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 
 
@@ -80,16 +80,13 @@ $(IntermediateDirectory)/.d:
 	@test -d ./Debug || $(MakeDirCommand) ./Debug
 
 PreBuild:
-	@echo Executing Pre Build commands ...
-	g++ --version
-	@echo Done
 
 
 ##
 ## Objects
 ##
 $(IntermediateDirectory)/main$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/michael/Branches/VariadicTemplates/VariadicTypelists/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/michael/VariadicTemplates/VariadicTypelists/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main$(ObjectSuffix) -MF$(IntermediateDirectory)/main$(DependSuffix) -MM "main.cpp"
 
