@@ -11,3 +11,11 @@
 *.lai
 *.la
 *.a
+
+# Project specific ignores
+Debug/
+Release/
+*.tags
+VariadicTypelists.txt
+*.workspace.*
+*_wsp.mk
