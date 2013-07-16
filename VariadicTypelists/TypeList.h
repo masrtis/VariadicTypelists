@@ -59,3 +59,39 @@ public:
 	    value = checkNextElement == -1 ? -1 : 1 + checkNextElement
 	};
 };
+
+template <typename ToAppend, typename... List>
+struct Append;
+
+template <typename ToAppend, typename... List>
+struct Append<ToAppend, TypeList<List...>>
+{
+	typedef TypeList<List..., ToAppend> Result;
+};
+
+template <typename... ToAppend, typename... List>
+struct Append<TypeList<ToAppend...>, TypeList<List...>>
+{
+	typedef TypeList<List..., ToAppend...> Result;
+};
+
+template <typename ToErase, typename... List>
+struct Erase;
+
+template <typename ToErase>
+struct Erase<ToErase, TypeList<>>
+{
+	typedef TypeList<> Result;
+};
+
+template <typename ToErase, typename... List>
+struct Erase<ToErase, TypeList<ToErase, List...>>
+{
+	typedef TypeList<List...> Result;
+};
+
+template <typename ToErase, typename Head, typename... Tail>
+struct Erase<ToErase, TypeList<Head, Tail...>>
+{
+	typedef typename Append<typename Erase<ToErase, TypeList<Tail...>>::Result, TypeList<Head>>::Result  Result;
+};
