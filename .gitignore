@@ -18,4 +18,5 @@ Release/
 *.tags
 VariadicTypelists.txt
 *.workspace.*
-*_wsp.mk
+*.mk
+Makefile
