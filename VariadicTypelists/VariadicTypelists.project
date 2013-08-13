@@ -11,6 +11,9 @@
     <File Name="main.cpp"/>
     <File Name="TypeList.h"/>
     <File Name="Command.h"/>
+    <File Name="Undo.h"/>
+    <File Name="UndoRedoStack.h"/>
+    <File Name="UndoRedoStack.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

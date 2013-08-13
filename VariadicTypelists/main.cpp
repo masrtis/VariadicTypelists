@@ -1,6 +1,8 @@
 #include "TypeList.h"
 #include <iostream>
 #include "Command.h"
+#include "Undo.h"
+#include <functional>
 
 struct TestFunctor
 {
@@ -71,6 +73,12 @@ int main()
     });
     testLambdaCommand(20);
 
+    int j = 0;
+
+    auto lambda = [](int, int){ return std::unique_ptr<RedoInterface>(nullptr); };
+    auto undoCommand = makeUndoCommand(lambda, j, i);
+    undoCommand->execute();
+    std::cout << j << std::endl;
 
     return 0;
 }
